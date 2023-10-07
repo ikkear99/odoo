@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_user_information_tree" model="ir.ui.view">
+        <field name="name">user.information.tree</field>
+        <field name="model">user.information</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="user_id" invisible="true"/>
+                <field name="full_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_user_information_form" model="ir.ui.view">
+        <field name="name">user.information.form</field>
+        <field name="model">user.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="full_name" required="true"/> 
+                            <field name="user_id" invisible="1"/> 
+                            <field name="marital_status"/> 
+                        </group>
+                        <group>
+                            <field name="date_of_birth"/>
+                            <!-- <field name="age"/> -->
+                            <field name="sex"/>
+                            <field name="id_number"/>
+                        </group>
+                        <group>
+                            <field name="department"/>
+                            <field name="institution"/>
+                            <!-- <field name="e_mail"/> -->
+                            <!-- <field name="second_mail"/> -->
+                            <field name="account_number"/>
+                            <field name="openned_at"/>
+                            <field name="bank"/>
+                        </group>
+                        <group>
+                            <!-- <field name="telephone"/>
+                            <field name="cellphone"/> -->
+                        </group>
+                    </group>
+                </sheet>
+                <!-- <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div> -->
+            </form>
+        </field>
+    </record>
+
+    <record id="action_user_information" model="ir.actions.act_window">
+        <field name="name">Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">user.information</field>
+        <field name="view_id" ref="view_user_information_tree" />       
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('user_id','=', uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+    
+    <menuitem id="menu_user_information_root"
+              name="User Information"
+              action="action_user_information"
+              sequence="10"/>
+
+</odoo>
