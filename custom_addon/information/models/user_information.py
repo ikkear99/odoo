@@ -18,7 +18,7 @@ class UserInformation(models.Model):
         default=lambda self: self.env.context.get('user_id', self.env.user.id),
         index=True,
     )
-    full_name = fields.Char(string='Full Name', required=True, tracking=True)
+    full_name = fields.Char(string='Full Name',required=True, tracking=True)
     date_of_birth = fields.Date(string="Date of Birth", required=True)
     sex = fields.Selection([('m', 'Male'),('f', 'Female')], string ="Sex",required=True)
     image = fields.Binary(string="Image")
@@ -27,21 +27,18 @@ class UserInformation(models.Model):
     id_number = fields.Char(string='ID Number')
     institution = fields.Char(string='Institution')
     address = fields.Char(string='Add')
-    # telephone = fields.Char(
-    #     'TelePhone', tracking=50,
-    #     compute='_compute_phone', inverse='_inverse_phone', readonly=False, store=True)
-    # cellphone = fields.Integer(string='Cell Phone')
-    # e_mail = fields.Char(string='E-Mail')
-    # second_mail = fields.Char(string='Second-Mail')
     account_number = fields.Char(string='Account Number')
     openned_at = fields.Char(string='Oppenned At')
     bank = fields.Char(string='Bank Brank')
 
+    def user_information_action(self):
+        user_id = self.env['user.information'].search([('user_id', '=', self._uid)])
+        action = {
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "user.information",
+            "res_id": user_id.id,
+        }
+        return  action  
 
-    @api.constrains('user_id')
-    def _check_user_id(self):
-        for record in self:
-            # Define your domain logic here
-            # For example, you can restrict records to only those with the same user_id as the current user
-            if record.user_id != self.env.user:
-                raise ValidationError(_("You can only create records for yourself."))
+
