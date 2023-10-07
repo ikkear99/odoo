@@ -4,7 +4,7 @@
         <field name="name">user.information.tree</field>
         <field name="model">user.information</field>
         <field name="arch" type="xml">
-            <tree sample="1">
+            <tree sample="1" create="false">
                 <field name="user_id" invisible="true"/>
                 <field name="full_name"/>
             </tree>
@@ -15,7 +15,7 @@
         <field name="name">user.information.form</field>
         <field name="model">user.information</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="false">
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
                     <group>
