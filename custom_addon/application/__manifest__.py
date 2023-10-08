@@ -10,7 +10,8 @@
     'maintainer': '',
     'website': "",
     'depends': [
-        'base'
+        'base',
+        'information'
     ],
     'data': [
         'security/security.xml',
