@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="group_admin" model="res.groups">
+        <field name="name">Department Admin Group</field>
+        <field name="comment">the admin will have create department.</field>
+    </record>
+
+    <record id="departments_user_group" model="res.groups">
+        <field name="name">Departments User Group</field>
+    </record>
+       
+</odoo>

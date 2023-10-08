@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ 
+    <record id="view_user_information_form" model="ir.ui.view">
+        <field name="name">user.information.form</field>
+        <field name="model">user.information</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="full_name" required="true"/> 
+                            <field name="user_id" invisible="1"/> 
+                            <field name="marital_status"/> 
+                        </group>
+                        <group>
+                            <field name="date_of_birth"/>
+                            <field name="sex"/>
+                            <field name="id_number"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="institution"/>
+                            <field name="account_number"/>
+                            <field name="openned_at"/>
+                            <field name="bank"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="user_information_action">
+        <field name="name">Res Partner Server Action</field>
+        <field name="model_id" ref="model_user_information"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.user_information_action()
+        </field>
+    </record>
+    
+    <menuitem id="menu_user_information_root"
+              name="User Information"
+              action="user_information_action"
+              sequence="10"/>
+</odoo>

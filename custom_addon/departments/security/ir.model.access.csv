@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_departments,departments,model_departments,departments.group_admin,1,1,1,1
+access_user_departments,departments,model_departments,departments.departments_user_group,1,0,0,0
