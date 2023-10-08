@@ -20,7 +20,7 @@
                             <field name="id_number"/>
                         </group>
                         <group>
-                            <field name="department"/>
+                            <field name="department_id"/>
                             <field name="institution"/>
                             <field name="account_number"/>
                             <field name="openned_at"/>

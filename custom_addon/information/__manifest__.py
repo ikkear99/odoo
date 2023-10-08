@@ -32,7 +32,7 @@
     'website': "https://www.cybrosys.com",
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
-    'depends': ['mail'],
+    'depends': ['mail','departments'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',

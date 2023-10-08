@@ -23,7 +23,7 @@ class UserInformation(models.Model):
     sex = fields.Selection([('m', 'Male'),('f', 'Female')], string ="Sex",required=True)
     image = fields.Binary(string="Image")
     marital_status = fields.Selection([('s','Single'),('m','Married'),('w','Widowed'),('d','Divorced'),('x','Seperated')],string='Marital Status')
-    department = fields.Char(string='Department')
+    department_id = fields.Many2one('departments',string='Departments')
     id_number = fields.Char(string='ID Number')
     institution = fields.Char(string='Institution')
     address = fields.Char(string='Add')
@@ -33,12 +33,15 @@ class UserInformation(models.Model):
 
     def user_information_action(self):
         user_id = self.env['user.information'].search([('user_id', '=', self._uid)])
+
         action = {
             "type": "ir.actions.act_window",
             "view_mode": "form",
             "res_model": "user.information",
-            "res_id": user_id.id,
         }
+        if user_id :
+            action['res_id'] = user_id.id
+            
         return  action  
 
 
