@@ -3,8 +3,8 @@
     <data noupdate="0">
 
         <record id="status_draft" model="status.application">
-            <field name="name">To Submit</field>
-            <field name="type_status">to_submit</field>
+            <field name="name">Draft</field>
+            <field name="type_status">draft</field>
         </record>
 
         <record id="status_submmitted" model="status.application">

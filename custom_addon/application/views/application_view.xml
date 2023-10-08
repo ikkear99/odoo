@@ -12,7 +12,11 @@
                 <field name="application_institution"/>
                 <field name="pi"/>
                 <field name="signature"/>
-                <field name="status" widget="badge" decoration-primary="flag_status == 'to_submit'" decoration-info="flag_status == 'submitted'" decoration-success="flag_status == 'approved'"/>
+                <field name="user_information"/>
+                <field name="organize_and_preside"/>
+                <field name="status" widget="badge" decoration-primary="flag_status == 'draft'" decoration-info="flag_status == 'submitted'" decoration-success="flag_status == 'approved'"/>
+                <button name="user_information_action" string="User Information" type="object"
+                    class="oe_highlight"/>
             </tree>
         </field>
     </record>
@@ -24,11 +28,10 @@
             <form string="application - Form" duplicate="0">
                 <header>
                     <field name="status" widget="statusbar" readonly="1"/>
-                    <button string="Submit" name="action_submit_application" type="object" class="btn-primary" attrs="{'invisible': [('flag_status', '!=', 'to_submit')]}" groups="application.application_scientist"/>
+                    <button string="Submit" name="action_submit_application" type="object" class="btn-primary" attrs="{'invisible': [('flag_status', '!=', 'draft')]}" groups="application.application_scientist"/>
                     <button string="Approve" name="action_approve_application" type="object" class="btn-primary" attrs="{'invisible': [('flag_status', '!=', 'submitted')]}" groups="application.application_appraiser"/>
                 </header>
                 <sheet>
-                    <widget name="web_ribbon" title="TO SUBMIT" bg_color="bg-primary" attrs="{'invisible':[('flag_status', '!=', 'to_submit')]}"/>
                     <widget name="web_ribbon" title="SUBMITTED" bg_color="bg-info" attrs="{'invisible':[('flag_status', '!=', 'submitted')]}"/>
                     <widget name="web_ribbon" title="APPROVED" bg_color="bg-success" attrs="{'invisible':[('flag_status', '!=', 'approved')]}"/>
                     <sheet>
@@ -38,12 +41,15 @@
                                 <field name="project_name"/>
                                 <field name="main_focuses"/>
                                 <field name="date"/>
+                                <field name="user_information"/>
                             </group>
                             <group name="group_right">
                                 <field name="application_institution"/>
                                 <field name="pi"/>
                                 <field name="signature"/>
                                 <field name="flag_status" invisible="1"/>
+                                <field name="organize_and_preside" widget="selection"/>
+                                <field name="attachments" filename="name"/>
                             </group>
                         </group>
                         <separator string="Articles to be produced:"/>
