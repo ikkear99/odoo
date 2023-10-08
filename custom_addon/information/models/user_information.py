@@ -12,6 +12,10 @@ class UserInformation(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = "full_name"
 
+    def department_create(self):
+        
+        return [('create_uid', 'in',  self.env.ref('departments.group_admin').users.ids)]
+    
     user_id = fields.Many2one(
         'res.users',
         string='User',
@@ -23,7 +27,7 @@ class UserInformation(models.Model):
     sex = fields.Selection([('m', 'Male'),('f', 'Female')], string ="Sex",required=True)
     image = fields.Binary(string="Image")
     marital_status = fields.Selection([('s','Single'),('m','Married'),('w','Widowed'),('d','Divorced'),('x','Seperated')],string='Marital Status')
-    department_id = fields.Many2one('departments',string='Departments')
+    department_id = fields.Many2one('departments',string='Departments',domain=department_create)
     id_number = fields.Char(string='ID Number')
     institution = fields.Char(string='Institution')
     address = fields.Char(string='Add')
@@ -31,6 +35,8 @@ class UserInformation(models.Model):
     openned_at = fields.Char(string='Oppenned At')
     bank = fields.Char(string='Bank Brank')
 
+  
+    
     def user_information_action(self):
         user_id = self.env['user.information'].search([('user_id', '=', self._uid)])
 
