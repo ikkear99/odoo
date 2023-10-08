@@ -9,11 +9,5 @@
     <record id="departments_user_group" model="res.groups">
         <field name="name">Departments User Group</field>
     </record>
-
-    <!-- <record id="restrict_action_to_admin" model="ir.rule">
-        <field name="name">Restrict Action to Admin</field>
-        <field name="model_id" ref="model_departments" />
-        <field name="groups" eval="[(4, ref('departments.group_admin'))]" />
-    </record> -->
-    
+       
 </odoo>
